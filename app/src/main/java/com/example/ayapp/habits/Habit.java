@@ -18,10 +18,10 @@ public class Habit {
     }
 
     public Habit(){
-        this.title = "my first habit";
-        this.description = "this is a test habit";
-        this.goal = 5;
-        this.id = 1234;
+        this.title = null;
+        this.description = null;
+        this.goal = 0;
+        this.id = 0;
     }
 
 
