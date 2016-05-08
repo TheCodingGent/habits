@@ -65,6 +65,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HabitsSQLiteHelper db = new HabitsSQLiteHelper(this);
+
+        //drop existing db if exists
+        db.onUpgrade(db.getWritableDatabase(), 1, 2); //switch version 1 to 2
+
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);

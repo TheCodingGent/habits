@@ -1,5 +1,7 @@
 package com.example.ayapp.habits;
 
+import java.util.ArrayList;
+
 /**
  * Created by yasser.ghamlouch on 2016-05-07.
  */
@@ -27,18 +29,16 @@ public class User {
         this.password = null;
         this.habits = null;
         this.habitsId = -1;
-    };
+    }
 
-    public User(int id, String username, String email, String password){
-        this.id = id;
+    public User(String username, String email, String password){
         this.username = username;
         this.email = email;
         this.password = password;
         this.habits = new ArrayList<Habit>();
     }
 
-    public User(int id, String username, String email, String password, ArrayList<Habit> habits){
-        this.id = id;
+    public User(String username, String email, String password, ArrayList<Habit> habits){
         this.username = username;
         this.email = email;
         this.password = password;
@@ -97,6 +97,26 @@ public class User {
         this.habits = habits;
     }
 
+    /***********************************************************************************************
+     * API - PUBLIC INTERFACE
+     **********************************************************************************************/
+    public boolean addHabit(Habit habit){
+        boolean result = false;
+        if (habit != null){
+            habits.add(habit);
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean removeHabit(Habit habit){
+        boolean result = false;
+        if (habit != null){
+            habits.remove(habit);
+            result = true;
+        }
+        return result;
+    }
 
     /***********************************************************************************************
      * UTILITY METHODS
