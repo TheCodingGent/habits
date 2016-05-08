@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 attemptLogin();
-                //remove when this before pushing the files
+                //TODO: remove this before pushing the files
                 Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(myIntent);
             }

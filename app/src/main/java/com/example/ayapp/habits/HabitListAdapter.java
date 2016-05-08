@@ -36,6 +36,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
         // Populate the data into the template view using the data object
         habitTitle.setText(habit.getTitle());
         habitDescription.setText(habit.getDescription());
+        //TODO: fix what the string says and extract string resource
         habitGoal.setText("Plan to finish the habit in "+habit.getGoal()+" days.");
 
         // Return the completed view to render on screen

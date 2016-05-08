@@ -12,7 +12,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Construct the data source
+    // TODO: switch this arraylist with user.arraylist
+    ArrayList<Habit> arrayOfHabits;
+    // Create the adapter to convert the array to views
+    HabitListAdapter adapter;
+
     //created habit object for testing
+    //TODO: remove before pushing files
     Habit habit = new Habit("first habit","this is a habit created for testing",5,1234);
 
     @Override
@@ -23,26 +30,33 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        // Construct the data source
-        ArrayList<Habit> arrayOfHabits = new ArrayList<Habit>();
+        //initialize the ArrayList
+        arrayOfHabits = new ArrayList<Habit>();
         //add random habit to arrayOfHabits for testing
+        // TODO: remove before pushing files
         arrayOfHabits.add(habit);
-        arrayOfHabits.add(habit);
-        
-        // Create the adapter to convert the array to views
-        HabitListAdapter adapter = new HabitListAdapter(this, arrayOfHabits);
+
+        //initialize the adapter
+        adapter = new HabitListAdapter(this, arrayOfHabits);
         // Attach the adapter to a ListView
         ListView habitListView = (ListView) findViewById(R.id.habitListView);
         habitListView.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                //used to check to see if the list is refreshing
+                //TODO: fix before pushing files
+                arrayOfHabits.add(habit);
+                adapter.notifyDataSetChanged();
             }
         });
+
     }
 
 }
