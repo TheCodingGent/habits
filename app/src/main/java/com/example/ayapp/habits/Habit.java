@@ -5,11 +5,25 @@ package com.example.ayapp.habits;
  */
 public class Habit {
 
-    private String title;// habit title
-    private String description;// habit description
+    /***********************************************************************************************
+     * VARIABLES
+     * ********************************************************************************************/
+     // Private instance variables
+    private String title;
+    private String description;
     private int goal;// number of days in which you want to preform this habit
-    private int id; // used as an index in the database
+    private int id;
 
+    /***********************************************************************************************
+     * CONSTRUCTORS
+     * ********************************************************************************************/
+    public Habit(){
+        this.title = null;
+        this.description = null;
+        this.goal = 0;
+        this.id = 0;
+    }
+    
     public Habit(String title,String description, int goal, int id){
         this.title = title;
         this.description = description;
@@ -17,14 +31,9 @@ public class Habit {
         this.id = id;
     }
 
-    public Habit(){
-        this.title = null;
-        this.description = null;
-        this.goal = 0;
-        this.id = 0;
-    }
-
-
+    /***********************************************************************************************
+     * SETTERS AND GETTERS
+     * ********************************************************************************************/
     public String getTitle() {
         return title;
     }
