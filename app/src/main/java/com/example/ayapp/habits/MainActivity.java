@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //created habit object for testing
-    Habit habit = new Habit();
+    Habit habit = new Habit("first habit","this is a habit created for testing",5,1234);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Habit> arrayOfHabits = new ArrayList<Habit>();
         //add random habit to arrayOfHabits for testing
         arrayOfHabits.add(habit);
+        arrayOfHabits.add(habit);
+        
         // Create the adapter to convert the array to views
         HabitListAdapter adapter = new HabitListAdapter(this, arrayOfHabits);
         // Attach the adapter to a ListView

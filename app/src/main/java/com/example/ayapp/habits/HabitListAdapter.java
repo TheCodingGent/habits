@@ -20,16 +20,24 @@ public class HabitListAdapter extends ArrayAdapter<Habit> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         // Get the data item for this position
         Habit habit = getItem(position);
+
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.habit_row, parent, false);
         }
         // Lookup view for data population
         TextView habitTitle = (TextView) convertView.findViewById(R.id.habitTitle);
+        TextView habitDescription = (TextView) convertView.findViewById(R.id.habitDescription);
+        TextView habitGoal = (TextView) convertView.findViewById(R.id.habitGoal);
+
         // Populate the data into the template view using the data object
         habitTitle.setText(habit.getTitle());
+        habitDescription.setText(habit.getDescription());
+        habitGoal.setText("Plan to finish the habit in "+habit.getGoal()+" days.");
+
         // Return the completed view to render on screen
         return convertView;
     }
