@@ -65,4 +65,14 @@ public class Habit {
     public void setId(int id) {
         this.id = id;
     }
+    
+    /***********************************************************************************************
+     * UTILITY METHODS
+     *********************************************************************************************/
+      @Override
+      public String toString() {
+        return "Habit [Title= " + title + ", Description= " + description + ", Goal= " + goal + 
+         ", ID= " + id + "]";
+      }
+    
 }
