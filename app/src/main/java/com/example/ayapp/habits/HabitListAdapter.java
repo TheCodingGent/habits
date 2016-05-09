@@ -20,7 +20,7 @@ public class HabitListAdapter extends ArrayAdapter<Habit>{
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
 
         // Get the data item for this position
         final Habit habit = getItem(position);

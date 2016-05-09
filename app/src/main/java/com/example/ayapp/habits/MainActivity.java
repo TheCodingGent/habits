@@ -2,13 +2,10 @@ package com.example.ayapp.habits;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     //created habit object for testing
     //TODO: remove before pushing files
-    Habit habit = new Habit("first habit","this is a habit created for testing",5,1234);
+    Habit defaultHabit = new Habit("Default Habit","This is how the Habit description is shown",5,1234);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         arrayOfHabits = new ArrayList<Habit>();
         //add random habit to arrayOfHabits for testing
         // TODO: remove before pushing files
-        arrayOfHabits.add(habit);
+        arrayOfHabits.add(defaultHabit);
 
         //initialize the adapter
         adapter = new HabitListAdapter(this, arrayOfHabits);
         // Attach the adapter to a ListView
-        final ListView habitListView = (ListView) findViewById(R.id.habitListView);
+        ListView habitListView = (ListView) findViewById(R.id.habitListView);
         habitListView.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -48,16 +45,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 //used to check to see if the list is refreshing
                 //TODO: fix before pushing files
-                arrayOfHabits.add(habit);
+                arrayOfHabits.add(defaultHabit);
                 adapter.notifyDataSetChanged();
             }
         });
-
     }
-
-
-
 }
