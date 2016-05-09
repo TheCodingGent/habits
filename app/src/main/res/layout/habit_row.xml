@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/habitsListAdapter"
-    android:orientation="vertical">
+    android:id="@+id/habitsListAdapter">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/habitTitle"
-        android:text="text"
-        android:layout_margin="@dimen/activity_horizontal_margin"/>
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@+id/habitDeleteButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/habitTitle"
+            android:text="text"
+            android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/habitDescription"
+            android:text="text"
+            android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/habitGoal"
+            android:text="text"
+            android:layout_margin="@dimen/activity_horizontal_margin" />
+    </LinearLayout>
+
+
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/habitDescription"
-        android:text="text"
-        android:layout_margin="@dimen/activity_horizontal_margin"/>
+        android:id="@+id/habitDeleteButton"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_delete_white"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/habitGoal"
-        android:text="text"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        />
-</LinearLayout>
+</RelativeLayout>
