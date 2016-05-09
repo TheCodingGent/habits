@@ -70,7 +70,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/sign_up_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/action_sign_up"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@android:color/holo_blue_dark" />
 
         </LinearLayout>
     </ScrollView>
