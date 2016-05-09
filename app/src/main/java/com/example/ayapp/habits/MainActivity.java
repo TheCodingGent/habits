@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         //initialize the adapter
         adapter = new HabitListAdapter(this, arrayOfHabits);
         // Attach the adapter to a ListView
-        ListView habitListView = (ListView) findViewById(R.id.habitListView);
+        final ListView habitListView = (ListView) findViewById(R.id.habitListView);
         habitListView.setAdapter(adapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -47,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
                 //used to check to see if the list is refreshing
                 //TODO: fix before pushing files
@@ -58,5 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
 }
