@@ -14,15 +14,18 @@ public class MainActivity extends AppCompatActivity {
     /***********************************************************************************************
      * VARIABLES
      **********************************************************************************************/
-    // Construct the data source
-    // TODO: switch this arraylist with user.arraylist
-    ArrayList<Habit> arrayOfHabits;
     // Create the adapter to convert the array to views
     HabitListAdapter adapter;
+    User user;
+    Habit habit;
     //created habit object for testing
     //TODO: remove before pushing files
-    Habit defaultHabit = new Habit("Default Habit","This is how the Habit description is shown",5,1234);
-    Habit habit;
+    Habit defaultHabit =
+            new Habit("Default Habit","This is how the Habit description is shown",5,1234);
+
+    /***********************************************************************************************
+     * API - PUBLIC INTERFACE
+     **********************************************************************************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +37,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        //List of Habits
-        //initialize the ArrayList
-        arrayOfHabits = new ArrayList<Habit>();
+        user = new User("Me","me@ayapp.com","password");
         //add random habit to arrayOfHabits for testing
         // TODO: remove before pushing files
-        arrayOfHabits.add(defaultHabit);
+        user.addHabit(defaultHabit);
 
-        //initialize the adapter
-        adapter = new HabitListAdapter(this, arrayOfHabits);
-        // Attach the adapter to a ListView
+        adapter = new HabitListAdapter(this, user.getHabits());
         ListView habitListView = (ListView) findViewById(R.id.habitListView);
         habitListView.setAdapter(adapter);
 
         //Add Habit Button
-        FloatingActionButton addNewHabitButton = (FloatingActionButton) findViewById(R.id.addNewHabitButton);
+        FloatingActionButton addNewHabitButton =
+                (FloatingActionButton) findViewById(R.id.addNewHabitButton);
         assert addNewHabitButton != null;
         addNewHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //starting the add new habit activity
                 //note the onActivityResult method adds the habit to the list directly
                 Intent intent = new Intent(MainActivity.this, AddNewHabitActivity.class);
                 startActivityForResult(intent, 1);
@@ -75,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     goal = 0;
                 }
 
-                habit = new Habit(name,description,goal, 1234);
-                arrayOfHabits.add(habit);
+                habit = new Habit(name, description, goal, 1234);
+                user.addHabit(habit);
                 adapter.notifyDataSetChanged();
             }
         }
