@@ -23,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     Habit defaultHabit =
             new Habit("Default Habit","This is how the Habit description is shown",5,1234);
 
-    /***********************************************************************************************
-     * API - PUBLIC INTERFACE
-     **********************************************************************************************/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

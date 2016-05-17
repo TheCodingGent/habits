@@ -17,7 +17,7 @@ public class AddNewHabitActivity extends AppCompatActivity {
     EditText habitDescription;
     EditText habitGoal;
     Button addHabitButton;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
