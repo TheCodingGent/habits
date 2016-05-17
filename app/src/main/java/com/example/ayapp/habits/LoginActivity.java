@@ -3,7 +3,6 @@ package com.example.ayapp.habits;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -89,24 +88,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button SignUpButton = (Button) findViewById(R.id.sign_up_button);
         if (mEmailSignInButton != null) {
             mEmailSignInButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     attemptLogin();
                 }
-            });
-
-        }
-        if (SignUpButton != null) {
-            SignUpButton.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openSignupActivity();
-                }
-
-
             });
         }
 
@@ -365,10 +352,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
-    }
-    private void openSignupActivity() {
-        Intent intent1= new Intent(this,SignupActivity.class);
-        startActivity(intent1);
     }
 }
 
