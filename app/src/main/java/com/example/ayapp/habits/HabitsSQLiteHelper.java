@@ -97,7 +97,7 @@ public class HabitsSQLiteHelper extends SQLiteOpenHelper{
         values.put(habit_GOAL, habit.getGoal());
 
         // insert user
-        db.insert(table_USERS, null, values);
+        db.insert(table_HABITS, null, values);
 
         // close database transaction
         db.close();
