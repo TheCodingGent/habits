@@ -33,11 +33,22 @@ public class AddNewHabitActivity extends AppCompatActivity {
         addHabitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("name", habitName.getText().toString());
-                intent.putExtra("description", habitDescription.getText().toString());
-                intent.putExtra("goal", habitGoal.getText().toString());
-                setResult(RESULT_OK,intent);
-                finish();
+                int goal;
+                try {
+                    goal = Integer.parseInt(habitGoal.getText().toString());
+                }catch (NumberFormatException nfe){
+                    goal = 0;
+                }
+                if(goal > 0){
+                    intent.putExtra("name", habitName.getText().toString());
+                    intent.putExtra("description", habitDescription.getText().toString());
+                    intent.putExtra("goal",goal);
+                    setResult(RESULT_OK,intent);
+                    finish();
+                }else{
+                    habitGoal.setError("Please add a valid number of days");
+                }
+
             }
         });
     }
