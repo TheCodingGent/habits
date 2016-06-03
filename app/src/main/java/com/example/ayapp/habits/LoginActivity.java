@@ -9,13 +9,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -62,11 +60,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private HabitsSQLiteHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HabitsSQLiteHelper db = new HabitsSQLiteHelper(this);
+        db = new HabitsSQLiteHelper(this);
 
         //drop existing db if exists
         db.onUpgrade(db.getWritableDatabase(), 1, 2); //switch version 1 to 2
@@ -105,10 +104,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             SignUpButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openSignupActivity();
+                    openSignUpActivity();
                 }
-
-
             });
         }
 
@@ -329,24 +326,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
             }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+    User user = db.readUser(mEmail);
+            if(user != null){
+                return true;
+            }else {
+                return false;
             }
-
-            // TODO: register the new account here.
-            return true;
         }
 
         @Override
@@ -355,8 +346,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+<<<<<<< HEAD
+                //finish();
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+=======
                 Intent mainActivityIntent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(mainActivityIntent);
+>>>>>>> master
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -369,9 +366,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
-    private void openSignupActivity() {
-        Intent intent1= new Intent(this,SignupActivity.class);
-        startActivity(intent1);
+
+    private void openSignUpActivity() {
+        Intent signUpIntent= new Intent(this,SignupActivity.class);
+        startActivity(signUpIntent);
     }
 }
 

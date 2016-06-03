@@ -52,11 +52,11 @@ public class HabitsSQLiteHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // SQL statement to create users table
-        String CREATE_USERS_TABLE = "CREATE TABLE users ( " + "user_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "username TEXT, " + "email TEXT, " + "password TEXT, " + "habits_id INTEGER )";
+        String CREATE_USERS_TABLE = "CREATE TABLE users ( " + "user_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "user_username TEXT, " + "user_email TEXT, " + "user_password TEXT, " + "habits_id INTEGER )";
         db.execSQL(CREATE_USERS_TABLE);
 
         // SQL statement to create habits table
-        String CREATE_HABITS_TABLE = "CREATE TABLE habits ( " + "habit_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "title TEXT, " + "description TEXT, " + "goal INTEGER, " + "habit_user_id INTEGER )";
+        String CREATE_HABITS_TABLE = "CREATE TABLE habits ( " + "habit_id INTEGER PRIMARY KEY AUTOINCREMENT, " + "habit_title TEXT, " + "habit_description TEXT, " + "habit_goal INTEGER, " + "habit_user_id INTEGER )";
         db.execSQL(CREATE_HABITS_TABLE);
     }
 
