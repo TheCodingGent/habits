@@ -101,10 +101,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
+        if (!mayRequestContacts()) {return;}
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -143,16 +140,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
+        if (mAuthTask != null) {return;}
 
         // Reset errors.
         mEmailView.setError(null);
@@ -267,7 +261,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             emails.add(cursor.getString(ProfileQuery.ADDRESS));
             cursor.moveToNext();
         }
-
         addEmailsToAutoComplete(emails);
     }
 
@@ -278,20 +271,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
     }
-
 
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
         };
-
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
     }
@@ -319,7 +309,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (InterruptedException e) {
                 return false;
             }
-    User user = db.readUser(mEmail);
+            User user = db.readUser(mEmail);
             if(user != null){
                 return true;
             }else {
@@ -333,7 +323,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-
                 Intent mainActivityIntent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(mainActivityIntent);
             } else {

@@ -119,6 +119,9 @@ public class HabitsSQLiteHelper extends SQLiteOpenHelper{
             user.setEmail(cursor.getString(2));
             user.setPassword(cursor.getString(3));
             user.setHabitsId(Integer.parseInt(cursor.getString(4)));
+        }else{
+            System.out.print("user does not exist");
+            return null;
         }
 
         db.close();
