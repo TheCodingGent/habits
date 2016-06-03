@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.AvoidXfermode;
+
 import java.util.ArrayList;
 
 /**
@@ -218,4 +220,5 @@ public class HabitsSQLiteHelper extends SQLiteOpenHelper{
         db.delete(table_HABITS, habit_ID + " = ?", new String[] { String.valueOf(habit.getId()) });
         db.close();
     }
+
 }
