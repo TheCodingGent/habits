@@ -76,18 +76,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         Button SignUpButton = (Button) findViewById(R.id.sign_up_button);
@@ -98,7 +86,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     attemptLogin();
                 }
             });
-
         }
         if (SignUpButton != null) {
             SignUpButton.setOnClickListener(new OnClickListener() {
@@ -346,14 +333,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-<<<<<<< HEAD
-                //finish();
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-=======
+
                 Intent mainActivityIntent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(mainActivityIntent);
->>>>>>> master
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -372,4 +354,3 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         startActivity(signUpIntent);
     }
 }
-

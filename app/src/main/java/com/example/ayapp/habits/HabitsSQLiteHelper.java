@@ -45,7 +45,6 @@ public class HabitsSQLiteHelper extends SQLiteOpenHelper{
         super(context, database_NAME, null, database_VERSION);
     }
 
-
     /***********************************************************************************************
      * API - PUBLIC INTERFACE
      **********************************************************************************************/
