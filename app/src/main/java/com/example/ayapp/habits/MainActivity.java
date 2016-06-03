@@ -63,14 +63,9 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK){
                 String name = data.getStringExtra("name");
                 String description = data.getStringExtra("description");
-                int goal;
-                try {
-                    goal = Integer.parseInt(data.getStringExtra("goal"));
-                } catch (NumberFormatException nfe) {
-                    goal = 0;
-                }
+                int goal = data.getIntExtra("goal",1);
 
-                habit = new Habit(name, description, goal, 1234);
+                habit = new Habit(name, description, goal, 1234); //add ID when available
                 user.addHabit(habit);
                 adapter.notifyDataSetChanged();
             }

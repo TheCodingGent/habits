@@ -81,6 +81,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptLogin();
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
                     return true;
                 }
                 return false;
@@ -344,9 +346,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+<<<<<<< HEAD
                 //finish();
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
+=======
+                Intent mainActivityIntent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(mainActivityIntent);
+>>>>>>> master
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
